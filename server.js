@@ -20,9 +20,7 @@ server.get('/', (request,response) => {
 server.listen(PORT,()=> {
     console.log(`Listening on PORT ${PORT}`);
 })
-
 // localhost:3004/weather?searchQ=
-
 server.get('/weather',(request,response)=>{
     let searchQ = request.query.searchQ;
     let Ndata = weather.find(value => {
@@ -35,14 +33,12 @@ server.get('/weather',(request,response)=>{
     })
     response.send(NewArray);
 });
-
 class ForeCast{
     constructor(a, b){
         this.date = a;
         this.description = b;
     }
 }
-
 server.get('*', (request, response) =>{
     response.status(404).send('NOT FOUND')
 });
