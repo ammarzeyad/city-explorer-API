@@ -4,7 +4,7 @@ const express = require('express');
 
 require('dotenv').config();
 
-const cors =require('cors');
+const cors = require('cors');
 
 const PORT = process.env.PORT;
 
@@ -12,37 +12,24 @@ const server = express();
 
 server.use(cors());
 
-const weather = require('./data/weather.json');
+const NewMovie = require('./Module/Movie');
 
-server.get('/', (request,response) => {
+const NewWeather = require('./Module/Weather');
+
+
+
+server.get('/', (request, response) => {
     response.status(200).send('Hello this is the home page');
 })
-server.listen(PORT,()=> {
+server.listen(PORT, () => {
     console.log(`Listening on PORT ${PORT}`);
 })
-// localhost:3004/weather?searchQ=
-server.get('/weather',(request,response)=>{
-    let searchQ = request.query.searchQ;
-    let Ndata = weather.find(value => {
-        if (value.city_name.toLocaleLowerCase() === searchQ.toLocaleLowerCase()) {
-            return value;
-        }
-    })
-    let NewArray = Ndata.data.map(Value => {
-        return new ForeCast(Value.valid_date, Value.weather.description);
-    })
-    response.send(NewArray);
-});
-class ForeCast{
-    constructor(a, b){
-        this.date = a;
-        this.description = b;
-    }
-}
-server.get('*', (request, response) =>{
+
+// localhost:3007/movie?searchQuery=
+server.get('/movie', NewMovie);
+
+// localhost:3007/weather?city=
+server.get('/weather', NewWeather);
+server.get('*', (request, response) => {
     response.status(404).send('NOT FOUND')
 });
-// function Error(error, request, response) {
-//     response.status(500).send({'Status': 500,responseText:'sorry something went wrong'});
-
-//   };
