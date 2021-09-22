@@ -25,10 +25,10 @@ server.listen(PORT, () => {
     console.log(`Listening on PORT ${PORT}`);
 })
 
-// localhost:3007/movie?searchQuery=
+// localhost:3008/movie?searchQuery=
 server.get('/movie', NewMovie);
 
-// localhost:3007/weather?city=
+// localhost:3008/weather?city=
 server.get('/weather', NewWeather);
 server.get('*', (request, response) => {
     response.status(404).send('NOT FOUND')
