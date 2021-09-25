@@ -17,10 +17,10 @@ server.use(cors());
 server.get('/', (request,response) => {
     response.status(200).send('Welcome to the home Route');
 })
-// localhost:3009/movie?searchQuery=
+// localhost:3008/movie?searchQuery=
 server.get('/movie', handleMovie);
 
-// localhost:3009/weather?city=
+// localhost:3008/weather?city=
 server.get('/weather', handleWeather);
 
 server.get('*', (request, response) =>{
