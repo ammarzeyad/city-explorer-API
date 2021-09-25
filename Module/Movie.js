@@ -18,6 +18,7 @@ function handleMovie(request, response) {
 }
 class Movie{
     constructor(movie){
+
         this.title = movie.title;
         this.overview = movie.overview;
         this.averageVotes = movie.vote_average;
@@ -27,5 +28,6 @@ class Movie{
         this.releasedOn = movie.release_date;
     }
 }
+
 
 module.exports = handleMovie;
