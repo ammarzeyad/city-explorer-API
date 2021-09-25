@@ -26,7 +26,6 @@ server.get('/weather', handleWeather);
 server.get('*', (request, response) =>{
     response.status(404).send('NOT FOUND')
 });
-
 server.listen(PORT,()=> {
     console.log(`Listening on PORT ${PORT}`);
 })
