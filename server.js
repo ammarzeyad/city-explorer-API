@@ -20,7 +20,7 @@ server.get('/', (request,response) => {
 server.listen(PORT,()=> {
     console.log(`Listening on PORT ${PORT}`);
 })
-// localhost:3004/weather?searchQ=
+// localhost:3008/weather?searchQ=
 server.get('/weather',(request,response)=>{
     let searchQ = request.query.searchQ;
     let Ndata = weather.find(value => {
