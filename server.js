@@ -10,7 +10,7 @@ const handleMovie = require('./Module/Movie');
 
 const handleWeather = require('./Module/Weather');
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3006;
 
 const server = express();
 server.use(cors());
@@ -33,12 +33,5 @@ server.get('*', (request, response) => {
     response.status(404).send('NOT FOUND')
 });
 
-server.listen(PORT,()=> {
-    console.log(`Listening on PORT ${PORT}`);
-})
-
-
-
-
-
-
+server.listen(PORT || 3006,()=> {
+    console.log(`Listening on PORT ${PORT}`)});
